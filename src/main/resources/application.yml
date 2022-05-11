@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    dirver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vueblog?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Singapore
+    username: root
+    password: Admin@2022
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+server:
+  port: 8081
