@@ -1,6 +1,8 @@
 package com.example.controller;
 
 
+import com.example.common.lang.Result;
+import com.example.entity.User;
 import com.example.service.IUserService;
 import com.example.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,9 @@ public class UserController {
     IUserService userService;
 
     @GetMapping("/index")
-    public Object index() {
-        return userService.getById(1L);
+    public Result index() {
+        User user = userService.getById(1L);
+        return Result.succ(200, "success", user);
     }
 
 }
