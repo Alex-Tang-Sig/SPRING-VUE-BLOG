@@ -18,6 +18,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountRealm extends AuthorizingRealm {
 
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return  token != null && token instanceof JwtToken;
+    }
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -26,6 +30,8 @@ public class AccountRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        JwtToken jwtToken = (JwtToken) token;
+        // 验证用户被锁定或者不存在，则抛出异常
         return null;
     }
 }
