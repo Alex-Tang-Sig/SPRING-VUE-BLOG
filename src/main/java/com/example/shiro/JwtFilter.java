@@ -27,8 +27,6 @@ import java.io.IOException;
 @Component
 public class JwtFilter extends AuthenticatingFilter {
 
-
-
     @Autowired
     JwtUtils jwtUtils;
 

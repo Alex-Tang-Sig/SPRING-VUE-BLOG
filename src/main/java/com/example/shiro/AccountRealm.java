@@ -2,6 +2,7 @@ package com.example.shiro;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.example.entity.User;
+import com.example.service.IUserService;
 import com.example.service.impl.UserServiceImpl;
 import com.example.util.JwtUtils;
 import io.jsonwebtoken.Claims;
@@ -25,7 +26,8 @@ public class AccountRealm extends AuthorizingRealm {
     JwtUtils jwtUtils;
     
     @Autowired
-    UserServiceImpl userService;
+    IUserService userService;
+
     @Override
     public boolean supports(AuthenticationToken token) {
         return  token != null && token instanceof JwtToken;

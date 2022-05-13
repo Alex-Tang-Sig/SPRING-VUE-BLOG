@@ -5,6 +5,7 @@ import com.example.common.lang.Result;
 import com.example.entity.User;
 import com.example.service.IUserService;
 import com.example.service.impl.UserServiceImpl;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class UserController {
     @Autowired
     IUserService userService;
 
+    @RequiresAuthentication
     @GetMapping("/index")
     public Result index() {
         User user = userService.getById(1L);
