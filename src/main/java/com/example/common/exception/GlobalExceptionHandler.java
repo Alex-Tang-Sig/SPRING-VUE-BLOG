@@ -42,6 +42,13 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public Result handler(IllegalArgumentException e) {
+        log.error("Illegal Argument Exception: --- {}", e);
+        return Result.fail(e.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(RuntimeException.class)
     public Result handler(RuntimeException e) {
         log.error("Runtime exception: ------ {}", e);

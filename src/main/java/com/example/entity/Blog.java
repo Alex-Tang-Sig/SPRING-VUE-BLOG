@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * <p>
  * 
@@ -21,7 +23,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("m_blog")
-public class Blog implements Serializable , Cloneable{
+public class Blog implements Serializable, Cloneable{
 
     private static final long serialVersionUID = 1L;
 
@@ -30,10 +32,13 @@ public class Blog implements Serializable , Cloneable{
 
     private Long userId;
 
+    @NotBlank(message = "title shouldn't be blank")
     private String title;
 
+    @NotBlank(message = "description shouldn't be blank")
     private String description;
 
+    @NotBlank(message = "content shouldn't be blank")
     private String content;
 
     private LocalDateTime created;
