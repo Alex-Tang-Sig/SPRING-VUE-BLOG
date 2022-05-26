@@ -27,7 +27,6 @@ import java.net.http.HttpResponse;
  * @date 23/5/22
  */
 @RestController
-
 public class AccountController {
 
     @Autowired
@@ -60,9 +59,8 @@ public class AccountController {
 
     @RequiresAuthentication
     @GetMapping("/logout")
-    public Result logout(HttpServletResponse response) {
+    public Result logout() {
         SecurityUtils.getSubject().logout();
-//        response.setHeader(AUTHORIZATION, "");
         return Result.succ(null);
     }
 }

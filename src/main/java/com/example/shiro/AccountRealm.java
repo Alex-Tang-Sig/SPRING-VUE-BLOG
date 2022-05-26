@@ -42,7 +42,7 @@ public class AccountRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         JwtToken jwtToken = (JwtToken) token;
         Claims claims = jwtUtils.getClaimByToken((String) jwtToken.getPrincipal());
-        Long userId = (Long) Long.valueOf(claims.getSubject());
+        Long userId =  Long.valueOf(claims.getSubject());
         User user = userService.getById(userId);
         // 验证用户被锁定或者不存在，则抛出异常
         if(user == null) {
